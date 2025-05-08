@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import ExpenseForm from './components/ExpenseForm';
@@ -52,19 +53,15 @@ const App = () => {
 
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-gray-50">
+      <div className="flex flex-col min-h-screen">
         <Navbar />
-        
-        {/* Main content section */}
-        <main className="flex-grow pt-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
+        <main className="flex-grow pt-24 px-4 max-w-6xl mx-auto">
           <Routes>
             <Route
               path="/"
               element={
                 <>
-                  <h1 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-800">
-                    Travel Expense Tracker
-                  </h1>
+                  <h1 className="text-3xl font-bold mb-6 text-center">Travel Expense Tracker</h1>
                   <ExpenseForm
                     newExpense={newExpense}
                     onChange={handleChange}
@@ -87,8 +84,6 @@ const App = () => {
             <Route path="/home" element={<Home />} />
           </Routes>
         </main>
-
-        {/* Footer fixed to bottom if content is short */}
         <Footer />
       </div>
     </Router>
